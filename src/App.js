@@ -4,7 +4,8 @@ import './App.css';
 import { DefaultLayout } from './Layout/DefaultLayout';
 // import { Dashboard } from './page/dashboard/Dashboard';
 // import { AddToken } from './page/new-token/AddToken';
-import { TicketList } from './page/ticket-listing/TicketList';
+// import { TicketList } from './page/ticket-listing/TicketList';
+import { Ticket } from './page/ticket/Ticket';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <DefaultLayout>
         {/* <Dashboard /> */}
         {/* <AddToken /> */}
-        <TicketList />
+        {/* <TicketList /> */}
+        <Ticket />
       </DefaultLayout>
     </div>
   );
