@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import { TicketTable } from '../../components/ticket-table/TicketTable'
 import tickets from "../../assets/data/dummy-tickets.json";
 import { PageBreadcrumb } from '../../components/breadcrumb/Breadcrumb';
+import { Link } from 'react-router-dom';
 
 export const Dashboard = () => {
   return (
@@ -14,12 +15,14 @@ export const Dashboard = () => {
         </Row>
         <Row>
             <Col className='text-center mt-5 mb-2'>
+            <Link to="/add-token">
                 <Button 
                 variant="info" 
                 style={{fontSize: "2rem", padding: "10px 30px"}}
                 >
                 Add New Token
                 </Button>
+            </Link>    
             </Col>
         </Row>
         <Row>

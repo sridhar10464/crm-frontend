@@ -5,8 +5,8 @@ import { Button, Form } from 'react-bootstrap'
 export const UpdateToken = ({msg, handleOnChange, handleOnSubmit}) => {
   return (
     <Form onSubmit={handleOnSubmit}>
-        <Form.Label>Reply</Form.Label>
-        <Form.Text>
+        <Form.Label>Reply: </Form.Label>
+        <Form.Text className="ms-2">
             Please reply your message here or 
             update the status 
         </Form.Text>

@@ -4,6 +4,7 @@ import { PageBreadcrumb } from '../../components/breadcrumb/Breadcrumb';
 import { SearchForm } from '../../components/search-form/SearchForm';
 import { TicketTable } from "../../components/ticket-table/TicketTable";
 import tickets from "../../assets/data/dummy-tickets.json";
+import { Link } from 'react-router-dom';
 
 export const TicketList = () => {
     const [str, setStr] = useState("");
@@ -28,12 +29,14 @@ export const TicketList = () => {
     <Container>
         <Row>
             <Col>
-                <PageBreadcrumb page="Ticket List" />
+                <PageBreadcrumb page="Token List" />
             </Col>
         </Row>
         <Row className="mt-4">
             <Col>
+            <Link to="/add-token">
                 <Button variant="info">Add New Token</Button>
+            </Link>    
             </Col>
             <Col className='text-right'>
                 <SearchForm handleOnChange={handleOnChange} str={str} />
@@ -42,7 +45,7 @@ export const TicketList = () => {
         <hr />
         <Row>
             <Col>
-                  <TicketTable tickets={ dispTicket } />
+                  <TicketTable tickets={tickets} />
             </Col>
         </Row>
     </Container>
