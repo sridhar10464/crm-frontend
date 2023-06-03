@@ -9,8 +9,8 @@ export const getAllTickets = () => {
     try {
       const result = await axios.get("http://localhost:3001/v1/ticket", {
           headers: {
-            Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGVtYWlsLmNvbSIsImlhdCI6MTY4NTYwOTU5NCwiZXhwIjoxNjg1Njk1OTk0fQ.s0U37yeAMGmRHPSaPy9_MLN2DhMy-K70kAi7wDiBzck"
-        //   Authorization: sessionStorage.getItem("accessJWT"),
+            // Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGVtYWlsLmNvbSIsImlhdCI6MTY4NTc4NTA1MiwiZXhwIjoxNjg1ODcxNDUyfQ.-F7dHBSqpD472xPavWXDXqyaQDaHNn27FRD49s_8WZ0"
+          Authorization: sessionStorage.getItem("accessJWT"),
         },
       });
 
@@ -27,6 +27,7 @@ export const getSingleTicket = (_id) => {
         const result = await axios.get(ticketUrl + _id, {
           headers: {
             Authorization: sessionStorage.getItem("accessJWT"),
+            "Access-Control-Allow-Credentials": "*"
           },
         });
   

@@ -1,15 +1,31 @@
-import React from 'react'
-import { Routes, Route, Link } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Route } from 'react-router-dom';
 import { DefaultLayout } from '../../Layout/DefaultLayout';
+import { Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginSuccess } from '../login/LoginSlice';
+import { fetchNewAccessJWT } from '../../api/userApi';
 
-const isAuth = true;
 export const PrivateRoute = ({children, ...rest}) => {
+  const dispatch = useDispatch();
+
+  const { isAuth } = useSelector((state) => state.login);
+
+  useEffect(() => {
+    const updateAccessJWT = async () => {
+      const result = await fetchNewAccessJWT();
+      result && dispatch(loginSuccess());
+    }
+    // updateAccessJWT();
+    sessionStorage.getItem("accessJWT") && dispatch(loginSuccess())
+   }, [dispatch]);
+
   return (
-    <Routes>
+    
         <Route 
             {...rest}
             render={() =>
-            isAuth ? <DefaultLayout>{children}</DefaultLayout> : <Link to="/" />} />
-    </Routes>
+            isAuth ? (<DefaultLayout>{children}</DefaultLayout>) : (<Redirect to="/" />)} />
+    
   )
 }
