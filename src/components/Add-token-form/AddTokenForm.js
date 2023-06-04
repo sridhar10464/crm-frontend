@@ -1,23 +1,32 @@
 import React, {useEffect, useState} from 'react';
 // import { PropTypes } from 'prop-types';
 import { Card } from 'antd';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Form, Row, Spinner } from 'react-bootstrap';
 import "../Add-token-form/AddTokenFormStyle.css";
 import { shortText } from '../../utils/validation';
+import { useDispatch, useSelector } from 'react-redux';
+import { openNewTicket } from './AddTicketAction';
 
 const initialFormData = {
   subject: "",
   issueDate: "",
-  details: "",
+  message: "",
 };
 
 const initialFormError = {
   subject: false,
   issueDate: false,
-  details: false,
+  message: false,
 };
 
 export const AddTokenForm = () => {
+  const dispatch = useDispatch();
+  const { user: { name } } = useSelector(state => state.user);
+
+  const { isLoading, error, successMsg } = useSelector(
+    (state) => state.openTicket
+  )
+
   const [formData, setFormData] = useState(initialFormData)
   const [formDataError, setFormDataError] = useState(initialFormError)
   useEffect(() => {}, [formData, formDataError])
@@ -44,13 +53,19 @@ export const AddTokenForm = () => {
         subject: !isSubjectValid,
       });
 
-        console.log("Form submit request received", formData);
+      dispatch(openNewTicket({...formData, sender:name}));
+        
     }
 
   return (
   <Card className='mt-3 add-new-ticket bg-light'>
   <h1 className='text-info text-center'>Add New Token</h1>
   <hr />
+  <div>
+    {error && <Alert variant = "danger">{error}</Alert>}
+    {successMsg && <Alert variant = "primary">{successMsg}</Alert>}
+    {isLoading && <Spinner variant="primary" animation="border" />}
+  </div>
     <Form autoComplete="off" onSubmit={handleOnSubmit}>
                 <Form.Group as={Row}>
                     <Form.Label column sm={3}>Subject</Form.Label>
@@ -81,12 +96,12 @@ export const AddTokenForm = () => {
                     </Col>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Message</Form.Label>
                     <Form.Control
                         as="textarea"
-                        name='details'
+                        name='message'
                         rows="5"
-                        value={formData.details}
+                        value={formData.message}
                         onChange={handleOnChange}
                         required
                     />

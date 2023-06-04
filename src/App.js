@@ -30,7 +30,7 @@ function App() {
 					<PrivateRoute exact path="/dashboard">
 						<Dashboard />
 					</PrivateRoute>
-					<PrivateRoute exact path="/add-ticket">
+					<PrivateRoute exact path="/add-token">
 						<AddToken />
 					</PrivateRoute>
 					<PrivateRoute exact path="/ticket/:tId">

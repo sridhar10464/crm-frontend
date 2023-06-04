@@ -9,10 +9,10 @@ import { closeTicket, fetchSingleTicket } from '../ticket-listing/TicketAction';
 
 // const ticket = tickets[0]
 export const Ticket = () => {
-  const { replyMsg } = useSelector(state => state.tickets)
+  
   const { tId } = useParams();
   const dispatch = useDispatch();
-  const {isLoading, error, selectedTicket} = useSelector(state => state.tickets)
+  const {isLoading, error, selectedTicket, replyTicketError} = useSelector(state => state.tickets)
 
   useEffect(() => {
     dispatch(fetchSingleTicket(tId));
@@ -29,7 +29,8 @@ export const Ticket = () => {
             <Col>
                 {isLoading && <Spinner variant="primary" animation="border" />}
                 {error && <Alert variant="danger">{error}</Alert>}
-                {replyMsg && <Alert variant="success">{replyMsg}</Alert>}
+                {replyTicketError && (<Alert variant="danger">{replyTicketError}</Alert>)}
+                
             </Col>
         </Row>
         <Row>
