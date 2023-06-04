@@ -8,6 +8,7 @@ import { TicketList } from './page/ticket-listing/TicketList';
 import { Ticket } from './page/ticket/Ticket';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { PrivateRoute } from './components/private-Route/PrivateRoute';
+import { Registration } from './page/registration/Registration';
 
 function App() {
 	return (
@@ -17,9 +18,9 @@ function App() {
 					<Route exact path="/">
 						<Entry />
 					</Route>
-					{/* <Route exact path="/registration">
+					<Route exact path="/registration">
 						<Registration />
-					</Route> */}
+					</Route>
 					{/* <Route exact path="/password-reset">
 						<PasswordOtpForm />
 					</Route> */}

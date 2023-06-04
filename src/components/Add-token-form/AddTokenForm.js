@@ -6,6 +6,7 @@ import "../Add-token-form/AddTokenFormStyle.css";
 import { shortText } from '../../utils/validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { openNewTicket } from './AddTicketAction';
+import { resetSuccessMsg } from './AddTokenSlice';
 
 const initialFormData = {
   subject: "",
@@ -27,9 +28,14 @@ export const AddTokenForm = () => {
     (state) => state.openTicket
   )
 
-  const [formData, setFormData] = useState(initialFormData)
-  const [formDataError, setFormDataError] = useState(initialFormError)
-  useEffect(() => {}, [formData, formDataError])
+  const [formData, setFormData] = useState(initialFormData);
+  const [formDataError, setFormDataError] = useState(initialFormError);
+
+  useEffect(() => {
+    return () => {
+      successMsg && dispatch(resetSuccessMsg())
+    }
+  }, [dispatch, formData, formDataError])
 
     const handleOnChange = (e) => {
         const { name, value } = e.target;

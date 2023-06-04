@@ -98,8 +98,13 @@ export const Login = ({formSwitcher}) => {
         <Row>
             <Col>
                 <a href="#!" onClick={() => formSwitcher("reset")}>
-                    Forget Password
+                    Forget Password?
                 </a>
+            </Col>
+        </Row>
+        <Row className="py-4">
+            <Col>
+            Are you new here? <a href="/registration">Register Now</a>
             </Col>
         </Row>
     </Container>

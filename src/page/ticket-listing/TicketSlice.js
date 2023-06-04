@@ -59,21 +59,21 @@ const ticketListSlice = createSlice({
         },
         closeTicketLoading: (state) => {
             state.isLoading = true;
-          },
-          closeTicketSuccess: (state, { payload }) => {
+        },
+        closeTicketSuccess: (state, { payload }) => {
             state.isLoading = false;
             state.error = "";
             state.replyMsg = payload;
-          },
-          closeTicketFail: (state, { payload }) => {
+        },
+        closeTicketFail: (state, { payload }) => {
             state.isLoading = false;
             state.error = payload;
-          },
-          resetResponseMsg: (state) => {
+        },
+        resetResponseMsg: (state) => {
             state.isLoading = false;
             state.replyTicketError = "";
             state.replyMsg = "";
-          },
+        },
     }
 });
 

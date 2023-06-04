@@ -6,17 +6,22 @@ import { UpdateToken } from '../../components/update-token/UpdateToken';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { closeTicket, fetchSingleTicket } from '../ticket-listing/TicketAction';
+import { resetResponseMsg } from '../ticket-listing/TicketSlice';
 
 // const ticket = tickets[0]
 export const Ticket = () => {
   
   const { tId } = useParams();
   const dispatch = useDispatch();
-  const {isLoading, error, selectedTicket, replyTicketError} = useSelector(state => state.tickets)
+  const {isLoading, error, selectedTicket,replyMsg, replyTicketError} = useSelector(state => state.tickets)
 
   useEffect(() => {
     dispatch(fetchSingleTicket(tId));
-   }, [tId, dispatch]);
+
+    return () => {
+      (replyMsg || replyTicketError) && dispatch(resetResponseMsg())
+    }
+   }, [tId, dispatch, replyMsg, replyTicketError]);
 
  return (
     <Container>
