@@ -27,7 +27,7 @@ export const TicketTable = () => {
             <Link to={`/token/${row._id}`}>{row.subject}</Link>
             </th>
             <th>{row.status}</th>
-            <th>{row.openAt}</th>
+            <th>{row.openAt && new Date(row.msgAt).toLocaleString()}</th>
           </tr>
           )) 
           ) : (

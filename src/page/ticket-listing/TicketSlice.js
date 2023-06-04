@@ -5,6 +5,8 @@ const initialState = {
     isLoading: false,
     error: "",
     searchTicketList: [],
+    selectedTicket: {},
+    replyMsg: ""
 }
 
 const ticketListSlice = createSlice({
@@ -42,6 +44,35 @@ const ticketListSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         },
+        replyTicketLoading: (state) => {
+            state.isLoading = true;
+        },
+        replyTicketSuccess: (state, { payload }) => {
+            state.isLoading = false;
+            state.error = "";
+            state.replyMsg = payload;
+        },
+        replyTicketFail: (state, { payload }) => {
+            state.isLoading = false;
+            state.replyTicketError = payload;
+        },
+        closeTicketLoading: (state) => {
+            state.isLoading = true;
+          },
+          closeTicketSuccess: (state, { payload }) => {
+            state.isLoading = false;
+            state.error = "";
+            state.replyMsg = payload;
+          },
+          closeTicketFail: (state, { payload }) => {
+            state.isLoading = false;
+            state.error = payload;
+          },
+          resetResponseMsg: (state) => {
+            state.isLoading = false;
+            state.replyTicketError = "";
+            state.replyMsg = "";
+          },
     }
 });
 
@@ -54,7 +85,14 @@ export const {
     searchTickets,
     fetchSingleTicketLoading,
     fetchSingleTicketSuccess,
-    fetchSingleTicketFail
+    fetchSingleTicketFail,
+    replyTicketLoading,
+    replyTicketSuccess,
+    replyTicketFail,
+    closeTicketLoading,
+    closeTicketSuccess,
+    closeTicketFail,
+    resetResponseMsg,
 } = actions;
 
 export default reducer;
