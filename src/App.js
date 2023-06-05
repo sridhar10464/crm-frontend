@@ -9,6 +9,7 @@ import { Ticket } from './page/ticket/Ticket';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { PrivateRoute } from './components/private-Route/PrivateRoute';
 import { Registration } from './page/registration/Registration';
+import { UserVerification } from './page/userVerification/UserVerification.js';
 
 function App() {
 	return (
@@ -24,9 +25,9 @@ function App() {
 					{/* <Route exact path="/password-reset">
 						<PasswordOtpForm />
 					</Route> */}
-					{/* <Route exact path="/verification/:_id/:email">
+					<Route exact path="/verification/:_id/:email">
 						<UserVerification />
-					</Route> */}
+					</Route>
 
 					<PrivateRoute exact path="/dashboard">
 						<Dashboard />

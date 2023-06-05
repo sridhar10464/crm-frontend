@@ -7,7 +7,7 @@ const loginUrl = rootUrl + "user/login";
 const userProfileUrl = rootUrl + "user";
 const logoutUrl = rootUrl + "user/logout";
 const newAccessJWT = rootUrl + "tokens";
-// const userVerificationUrl = userProfileUrl + "/verify";
+const userVerificationUrl = userProfileUrl + "/verify";
 
 export const UserRegistration = (formData) => {
   return new Promise(async (resolve, reject) => {
@@ -21,6 +21,21 @@ export const UserRegistration = (formData) => {
       }
     } catch (error) {
       reject(error);
+    }
+  });
+};
+
+export const userRegistrationVerification = (formData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await axios.patch(userVerificationUrl, formData);
+
+      resolve(res.data);
+      if (res.data.status === "success") {
+        resolve(res.data);
+      }
+    } catch (error) {
+      reject({ status: "error", message: error.error });
     }
   });
 };
