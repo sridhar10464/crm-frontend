@@ -6,7 +6,7 @@ import "../Add-token-form/AddTokenFormStyle.css";
 import { shortText } from '../../utils/validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { openNewTicket } from './AddTicketAction';
-import { resetSuccessMsg } from './AddTokenSlice';
+import { resetSuccessMsg } from './AddTokenslice';
 
 const initialFormData = {
   subject: "",

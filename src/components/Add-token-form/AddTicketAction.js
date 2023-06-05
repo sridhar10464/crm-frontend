@@ -2,7 +2,7 @@ import {
     openNewTicketPending,
     openNewTicketSuccess,
     openNewTicketFail,
-  } from "./AddTokenSlice";
+  } from "./AddTokenslice";
   import { createNewTicket } from "../../api/ticketApi";
   
   export const openNewTicket = (formData) => (dispatch) => {
