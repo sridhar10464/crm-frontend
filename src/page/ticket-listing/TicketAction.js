@@ -20,8 +20,8 @@ import {
 export const fetchAllTickets = () => async (dispatch) => {
     dispatch(fetchTicketLoading());
     try {
-       const result = await getAllTickets()
-       
+      const result = await getAllTickets();
+      result.data.result.length &&  
       dispatch(fetchTicketSuccess(result.data.result));
     } catch (error) {
         dispatch(fetchTicketFail(error.message));

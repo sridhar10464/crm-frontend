@@ -4,6 +4,7 @@ import loginReducer from "./components/login/LoginSlice";
 import userReducer from "./page/dashboard/userSlice";
 import newTicketReducer from "./components/Add-token-form/AddTokenslice";
 import registrationReducer from "./components/registrationForm/REgistrationSlice";
+import passwordReducer from "./components/ResetPassword/passwordSlice";
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         user: userReducer,
         openTicket: newTicketReducer,
         registration: registrationReducer,
+        password: passwordReducer,
     },
 });
 

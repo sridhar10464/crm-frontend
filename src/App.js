@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { PrivateRoute } from './components/private-Route/PrivateRoute';
 import { Registration } from './page/registration/Registration';
 import { UserVerification } from './page/userVerification/UserVerification.js';
+import { PasswordOtpForm } from './page/password-reset/PasswordOTPForm.js.js';
 
 function App() {
 	return (
@@ -22,9 +23,9 @@ function App() {
 					<Route exact path="/registration">
 						<Registration />
 					</Route>
-					{/* <Route exact path="/password-reset">
+					<Route exact path="/password-reset">
 						<PasswordOtpForm />
-					</Route> */}
+					</Route>
 					<Route exact path="/verification/:_id/:email">
 						<UserVerification />
 					</Route>
